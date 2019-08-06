@@ -1,16 +1,24 @@
 package client
 
 import (
+	"fmt"
 	"net/url"
+	"strconv"
 )
 
 func encodeQuery(values map[string]string) string {
 	q := url.Values{}
-	q.Add("start", "1")
-	q.Add("limit", "1")
+
+	for key, value := range values {
+		q.Add(key, value)
+	}
+
 	return q.Encode()
 }
 
-func buildURL() string {
+func buildURL(baseURL string, version int, route string) string {
 	// mix endpoint, api version and base URL
+	v := strconv.Itoa(version)
+
+	return fmt.Sprintf("%v/v%v/%v", baseURL, v, route)
 }

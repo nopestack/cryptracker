@@ -1,3 +1,10 @@
+package entities
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
 type ResponseStatus struct {
 	ErrorCode    int    `json:"error_code"`
 	ErrorMessage string `json:"error_message"`
