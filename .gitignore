@@ -1,2 +1,4 @@
 .env
 *.pdf
+resp.json
+sample_response.json

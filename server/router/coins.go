@@ -11,6 +11,7 @@ import (
 )
 
 var cmcConfig = client.ClientConfig{
+	BaseURL:    os.Getenv("API_BASE_URL"),
 	APIKey:     os.Getenv("API_KEY"),
 	APIVersion: 1,
 }
@@ -26,7 +27,6 @@ func CoinList(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	rp.FromJSON(response)
 
 	w.Header().Set("Content-Type", "application/json")
-	//w.Write(response)
 	encoded, _ := rp.ToBytes()
 	w.Write(encoded)
 }

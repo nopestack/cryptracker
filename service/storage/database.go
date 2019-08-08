@@ -10,6 +10,7 @@ type Storage struct {
 	db *sql.DB
 }
 
+// To be implemented in v2.0
 func New(driver string, url string) *Storage {
 	if url == nil {
 		panic("No database url provided")
@@ -28,3 +29,13 @@ func New(driver string, url string) *Storage {
 		db: &db
 	}
 }
+
+func (s Storage) Get() {}
+
+func (s *Storage) Insert() {}
+
+func (s *Storage) Delete() {}
+
+func (s *Storage) Update() {}
+
+func (s *Storage) Update() {}
