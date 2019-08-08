@@ -2,7 +2,7 @@ package entities
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 )
 
 type ResponseStatus struct {
@@ -20,10 +20,8 @@ func (c *Response) FromJSON(s []byte) {
 	err := json.Unmarshal(s, c)
 
 	if err != nil {
-		fmt.Printf("Error converting response to coin %v\n", err)
+		log.Printf("[server] Error converting response to coin\n")
 	}
-
-	fmt.Printf("%v", c)
 }
 
 func (c Response) ToBytes() ([]byte, error) {

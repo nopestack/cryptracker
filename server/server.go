@@ -21,7 +21,6 @@ type API struct {
 	server http.Server
 }
 
-//func New(c *ServerConfig, mux *httprouter.Router) *Server {
 func NewServer(c ServerConfig) *API {
 	mux := router.New()
 	server := &API{
@@ -34,6 +33,7 @@ func NewServer(c ServerConfig) *API {
 }
 
 func (a *API) Start() {
-	fmt.Printf("Initiating server %v\n", a.server.Addr)
+	log.Printf("[server] Initiating server at %v\n", a.server.Addr)
+
 	log.Fatal(a.server.ListenAndServe())
 }

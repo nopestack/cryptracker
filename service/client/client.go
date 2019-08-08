@@ -1,7 +1,6 @@
 package client
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -45,7 +44,7 @@ func (client CMCClient) request(method string, endpoint string) []byte {
 	)
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("[server] Error: %v\n", err)
 	}
 
 	req.Header.Set("Accepts", client.apiFormat)
@@ -58,7 +57,7 @@ func (client CMCClient) request(method string, endpoint string) []byte {
 	resp, err := client.Do(req)
 
 	if err != nil {
-		fmt.Println("Error sending request to server")
+		log.Printf("[server] Error: %v\n", err)
 	}
 
 	respBody, err := ioutil.ReadAll(resp.Body)

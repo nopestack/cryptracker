@@ -1,7 +1,7 @@
 package router
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"os"
 
@@ -19,11 +19,13 @@ var cmcConfig = client.ClientConfig{
 var cmcClient = client.New(cmcConfig)
 
 func CoinList(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Printf("Requesting coin list\n")
+	log.Printf("[server] Requesting coin list\n")
 	response := cmcClient.GetCoins()
+	log.Printf("[server] Coin list retrieved\n")
 
 	rp := &entities.Response{}
 
+	// NOTE: Marshalling/Unmarshalling could probably be handled better
 	rp.FromJSON(response)
 
 	w.Header().Set("Content-Type", "application/json")

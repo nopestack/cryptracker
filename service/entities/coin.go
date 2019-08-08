@@ -8,9 +8,9 @@ type Currency struct {
 type Quote map[string]Currency
 
 type Coin struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	MaxSupply   int    `json:"max_supply"`
-	LastUpdated string `json:"last_updated"`
-	Quote       Quote  `json:"quote"`
+	ID          int     `json:"id"`
+	Name        string  `json:"name"`
+	MaxSupply   float64 `json:"max_supply"`
+	LastUpdated string  `json:"last_updated"`
+	Quote       Quote   `json:"quote"`
 }
