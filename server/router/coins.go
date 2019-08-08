@@ -19,6 +19,7 @@ var cmcConfig = client.ClientConfig{
 var cmcClient = client.New(cmcConfig)
 
 func CoinList(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	log.Printf("[server] %v %v %v\n", r.Method, r.URL, r.RemoteAddr)
 	log.Printf("[server] Requesting coin list\n")
 	response := cmcClient.GetCoins()
 	log.Printf("[server] Coin list retrieved\n")
